@@ -1,0 +1,57 @@
+﻿@model Thiago_Vinicius_DR2_AT.Models.Aniversariante
+@{
+}
+
+@if(Model != null){
+
+<div class="text-center">
+    <h1 class="display-4">Editar contato</h1>
+</div>
+
+    <form action="/Aniversariantes/Atualizar/@Model.Id" method="post">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" placeholder="Digite o nome da pessoa" name="nome" value=@Model.Nome>
+    </div>
+
+    <div class="form-group">
+        <label for="nome">Sobrenome</label>
+        <input type="text" class="form-control" placeholder="Digite o sobrenome da pessoa" name="sobrenome" value=@Model.Sobrenome>
+    </div>
+
+    <div class="form-group">
+        <label for="nome">Data de Aniversário</label>
+        <input type="text" class="form-control" placeholder="DD/MM/YYYY" name="aniversario" value=@Model.DataDeAniversario>
+    </div>
+    <br/>
+
+    <button type="submit" class="btn btn-primary btn-block">Editar</button>
+    <a role="button" class="btn btn-secondary btn-block" asp-controller="Aniversariantes" asp-action="Index">Voltar</a>
+</form>
+
+} else {
+
+<div class="text-center">
+    <h1 class="display-4">Cadastrar contato</h1>
+</div>
+
+    <form action="/Aniversariantes/PostFromForm" method="post">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" placeholder="Digite o nome da pessoa" name="nome">
+        </div>
+
+        <div class="form-group">
+            <label for="nome">Sobrenome</label>
+            <input type="text" class="form-control" placeholder="Digite o sobrenome da pessoa" name="sobrenome">
+        </div>
+
+        <div class="form-group">
+            <label for="nome">Data de Aniversário</label>
+            <input type="text" class="form-control" placeholder="DD/MM/YYYY" name="aniversario">
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+        <a role="button" class="btn btn-secondary btn-block" asp-controller="Aniversariantes" asp-action="Index">Voltar</a>
+    </form>
+}

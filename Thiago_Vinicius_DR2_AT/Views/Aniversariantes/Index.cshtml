@@ -1,0 +1,54 @@
+﻿@model List<Thiago_Vinicius_DR2_AT.Models.Aniversariante>
+
+@{
+    ViewData["Title"] = "Aniversariantes Page";
+}
+
+<div class="text-center">
+    <br />
+    <h1 class="display-4">Listagem de contatos</h1>
+    <br />
+    <label class="display-6 mb-3">Pesquise por nome:</label>
+    <form action="/Aniversariantes/Filtrar" class="d-flex">
+        <input class="form-control form-control input-sm" name="nome" type="text" placeholder="Digite o nome da pessoa" />
+        <button type="submit" class="btn btn-primary">Pesquisar</button>
+    </form>
+
+    
+    <br/>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Data de aniversario</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @{
+                    foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Nome @item.Sobrenome</td>
+                        <td>@item.DataDeAniversario</td>
+                        <td>faltam @item.CalcularAniversario() dias para o aniversário</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-action="Criar" asp-controller="Aniversariantes" asp-route-id=@item.Id>Editar</a>
+                                <a role="button" class="btn btn-danger"  asp-action="Delete" asp-controller="Aniversariantes" asp-route-id=@item.Id>Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                }
+            </tr>
+
+        </tbody>
+    </table>
+    <br />
+    <div class="text-center">
+        <a class="btn btn-primary" role="button" asp-controller="Aniversariantes" asp-action="Criar">Adicionar novo contato</a>
+    </div>
+</div>
